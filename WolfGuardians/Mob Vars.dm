@@ -14,7 +14,7 @@ mob
 		isStunned=0
 		isMorphed=0
 		isPlayer=0
-
+		leader=0
 		isJumping=0
 
 		health=100

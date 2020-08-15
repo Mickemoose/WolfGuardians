@@ -12,6 +12,29 @@ mob
 			icon_state="P4"
 		Move()
 			..()
+	proc
+		LeaderScan()
+			while(src.leader)
+				world.log << "\n LEADER"
+				for(var/mob/players/M in activePlayers)
+					if(get_dist(src,M)<=7.5 ||M==src)
+						world.log << "\n NO"
+						continue
+
+					else
+						world.log << "\n [M] TELEPORTS TO [src]"
+						M.Teleport()
+					break
+				sleep(10)
+		Teleport()
+			for(var/mob/M in activePlayers)
+				if(M.leader)
+					animate(src,color=rgb(0,0,255),time=1)
+					src.loc=M.loc
+					spawn(1)
+						animate(src,color=rgb(255,255,255),time=2)
+						return
+
 	pressStart
 		appearance_flags = PIXEL_SCALE
 		icon='CHARACTERS/PressStart.dmi'
@@ -307,13 +330,15 @@ button_tracker/echo
 			if(usr.active && usr.selected)
 				if(usr.PlayerCheck())
 					fade.Map(usr, 255, 16, 3)
-
 					for(var/mob/M in activePlayers)
 						if(M.playerNumber==1)
 							M.loc=locate(36,28,1)
 							M.bound_width=19
 							M.bound_height=20
 							M.bound_x=21
+							M.leader=1
+							spawn(60)
+								M.LeaderScan()
 							M.invisibility=0
 							spawn(10)
 								usr.P1_UI_LOAD()

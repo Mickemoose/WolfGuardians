@@ -8,6 +8,8 @@ obj
 			list/
 				possibleItems = list("pizza","icecream","sushi","shrimp","donut")
 		Cross(mob/M)
+			if(M.isJumping)
+				return 1
 			if(!broken)
 				return 0
 			else

@@ -70,7 +70,7 @@ obj
 
 mob
 	var
-		debug=1
+		debug=0
 		lastdir=null
 		obj/maskbar/bartest
 		obj/maskbar/p1special
@@ -87,6 +87,7 @@ mob
 				P2.icon='CHARACTERS/Derek.dmi'
 				P2.icon_state="Idle"
 				P2.bound_width=19
+				activePlayers.Add(P2)
 				P2.bound_height=20
 				P2.bound_x=21
 				P2.dir=EAST
@@ -94,6 +95,8 @@ mob
 			src.loc=locate(42,30,1)
 			src.character="DEREK"
 			src.guardian="RED"
+			src.leader=1
+
 			src.gicon = file('CHARACTERS/Red.dmi')
 			src.client.eye=src
 			icon='CHARACTERS/Derek.dmi'
@@ -109,7 +112,10 @@ mob
 			usr.P3_UI_LOAD()
 			usr.P4_UI_LOAD()
 			P1_BARS_UPDATE()
+			playerCount=2
 			P2_BARS_UPDATE()
+			spawn(60)
+				src.LeaderScan()
 		else
 			src.loc=locate(44,39,2)
 			src.gameScreen="CSS"

@@ -200,7 +200,16 @@ mob
 					src.icon='CHARACTERS/Derek.dmi'
 				return
 			else
+
+
+
 				activePlayers.Remove(src)
+				if(leader)
+					if(activePlayers.len>=1)
+						var/mob/leader=pick(activePlayers)
+						src.client.eye=leader
+						leader.leader=1
+						leader.LeaderScan()
 				if(activePlayers.len<=0)
 					GameOver()
 				else
