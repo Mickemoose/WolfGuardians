@@ -11,9 +11,7 @@ mob
 		isDead=0
 		deadTimer=12
 		deadFlash=0
-		attacking=0
 		isStunned=0
-		isThrown=0
 		isMorphed=0
 		isPlayer=0
 

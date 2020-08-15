@@ -24,13 +24,9 @@ mob
 			target
 			state="Idle"
 			huntCooldown=0
-		Move()
-			if(attacking||attackCooldown||isStunned)
-				return
-			else
-				..()
+
 		New()
-			AI()
+		//	AI()
 		proc
 			AI()
 				spawn(5)

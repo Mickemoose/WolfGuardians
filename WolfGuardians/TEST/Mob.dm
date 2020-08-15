@@ -18,6 +18,7 @@ client
 		macros = new/button_tracker/echo
 		return ..()
 	Move()
+
 		..()
 /* An updte loop specific to players that calls PlayerUpdate every tick for players that are logged in.
 */

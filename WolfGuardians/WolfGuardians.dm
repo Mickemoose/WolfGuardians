@@ -69,7 +69,7 @@ obj
 
 mob
 	var
-		debug=0
+		debug=1
 		lastdir=null
 		obj/maskbar/bartest
 		obj/maskbar/p1special

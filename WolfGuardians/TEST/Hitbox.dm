@@ -50,8 +50,8 @@ mob
 					animate(E,color=rgb(255,0,0),time=3)
 					spawn(stunAmount)
 						animate(E,color=rgb(255,255,255),time=3)
-						E.SetVelocity(Vector2.Zero)
 						E.icon_state="Idle"
+						walk(E,0)
 						E.isStunned=0
 			if(src.dir==WEST)
 				for(var/obj/containers/C in bounds(src, -xoffset, yoffset, extrawidth, -8)) if(!C.broken)
@@ -75,8 +75,8 @@ mob
 					animate(E,color=rgb(255,0,0),time=3)
 					spawn(stunAmount)
 						animate(E,color=rgb(255,255,255),time=3)
-						E.SetVelocity(Vector2.Zero)
 						E.icon_state="Idle"
+						walk(E,0)
 						E.isStunned=0
 
 		HitStun(direction,distance,knockback=0,thrown=0)
@@ -89,27 +89,37 @@ mob
 				flick("knockback",src)
 				density=0
 				if(direction==EAST)
-					SetVelocity(19, 0)
+				//	SetVelocity(18, 0)
+					walk(src,EAST,0,6)
 					spawn(6)
-						SetVelocity(15, 0)
+					//	SetVelocity(14, 0)
+						walk(src,EAST,0,4)
 						spawn(3)
-							SetVelocity(5, 0)
+						//	SetVelocity(4, 0)
+							walk(src,EAST,0,2)
+							spawn(2)
+								walk(src,0)
 				if(direction==WEST)
-					SetVelocity(-19, 0)
+				//	SetVelocity(18, 0)
+					walk(src,WEST,0,6)
 					spawn(6)
-						SetVelocity(-15, 0)
+					//	SetVelocity(14, 0)
+						walk(src,WEST,0,4)
 						spawn(3)
-							SetVelocity(-5, 0)
+						//	SetVelocity(4, 0)
+							walk(src,WEST,0,2)
+							spawn(2)
+								walk(src,0)
 
 				spawn(16)
-					SetVelocity(0, 0)
-					isThrown=0
+					walk(src,0)
 					density=1
 					icon_state="down"
 					spawn(4)
 						DeathCheck()
 			else
 				flick("knockback",src)
+				isThrown=1
 				density=0
 				if(direction==EAST)
 					SetVelocity(14, 0)
@@ -136,9 +146,9 @@ mob
 				icon_state="down"
 				Death()
 			else
-				isThrown=0
 				flick("getup",src)
 				spawn(1)
+					isThrown=0
 					icon_state="Idle"
 
 		RespawnCheck()

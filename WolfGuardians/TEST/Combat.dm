@@ -1,43 +1,48 @@
 button_tracker/echo
 	Pressed(button)
-		..()
-		if(button=="GamepadUp" && !usr.attacking &&usr.gameScreen!="CSS")
-			usr.force_dir = usr.lastdir
-		if(button=="GamepadDown" && !usr.attacking &&usr.gameScreen!="CSS")
-			usr.force_dir = usr.lastdir
-		if(button=="GamepadFace1"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.Activate()
-		if(button=="GamepadFace2"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.Grab()
-			usr.Activate()
-		if(button=="GamepadFace3"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.Combo()
-		if(button=="GamepadLeft"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.force_dir = WEST
-			usr.dir=WEST
-			usr.lastdir=WEST
-		if(button=="GamepadRight"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.force_dir = EAST
-			usr.dir=EAST
-			usr.lastdir=EAST
-		if(button=="GamepadUpLeft"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.force_dir = WEST
-			usr.dir=WEST
-			usr.lastdir=WEST
-		if(button=="GamepadUpRight"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.force_dir = EAST
-			usr.dir=EAST
-			usr.lastdir=EAST
-		if(button=="GamepadDownLeft"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.force_dir = WEST
-			usr.dir=WEST
-			usr.lastdir=WEST
-		if(button=="GamepadDownRight"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.force_dir = EAST
-			usr.dir=EAST
-			usr.lastdir=EAST
-		if(button=="GamepadFace4"&&!usr.attacking&&usr.gameScreen!="CSS")
-			usr.Morph()
+		if(!usr.attacking||!usr.isThrown)
+			..()
+			if(button=="GamepadUp" && !usr.attacking &&usr.gameScreen!="CSS")
+				usr.force_dir = usr.lastdir
+			if(button=="GamepadDown" && !usr.attacking &&usr.gameScreen!="CSS")
+				usr.force_dir = usr.lastdir
+			if(button=="GamepadFace1"&&!usr.attacking&&usr.gameScreen!="CSS")
+				usr.Activate()
+			if(button=="GamepadFace2"&&!usr.attacking&&usr.gameScreen!="CSS")
+				usr.Grab()
+				usr.Activate()
+			if(button=="GamepadFace3"&&!usr.attacking&&usr.gameScreen!="CSS")
+				usr.Combo()
+			if(button=="GamepadLeft"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
+				usr.force_dir = WEST
+				usr.dir=WEST
+				usr.lastdir=WEST
+			if(button=="GamepadRight"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
+				usr.force_dir = EAST
+				usr.dir=EAST
+				usr.lastdir=EAST
+			if(button=="GamepadUpLeft"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
+				usr.force_dir = WEST
+				usr.dir=WEST
+				usr.lastdir=WEST
+			if(button=="GamepadUpRight"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
+				usr.force_dir = EAST
+				usr.dir=EAST
+				usr.lastdir=EAST
+			if(button=="GamepadDownLeft"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
+				usr.force_dir = WEST
+				usr.dir=WEST
+				usr.lastdir=WEST
+			if(button=="GamepadDownRight"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
+				usr.force_dir = EAST
+				usr.dir=EAST
+				usr.lastdir=EAST
+			if(button=="GamepadFace4"&&!usr.attacking&&usr.gameScreen!="CSS")
+				usr.Morph()
+			if(button=="North"||button=="GamepadUp")
+				return
+		else
+
 
 
 
@@ -108,10 +113,12 @@ mob
 				flick("Pick",src)
 				E.loc=locate(1,1,1)
 				view()<<munch
+				animate(src,color=rgb(0,255,0),time=3)
 				src.HealDamage(E.health)
 				src.attacking=1
 				src.attackCooldown=1
 				spawn(1.5)
+					animate(src,color=rgb(255,255,255),time=3)
 					src.attacking=0
 					src.attackCooldown=0
 					del(E)

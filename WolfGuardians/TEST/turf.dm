@@ -13,5 +13,7 @@ turf
 		road
 			icon='road.dmi'
 		DENSE
-			icon_state=null
+			icon_state="null"
 			density=1
+			Enter(mob/m)
+				return 0
