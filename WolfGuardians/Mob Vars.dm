@@ -15,6 +15,8 @@ mob
 		isMorphed=0
 		isPlayer=0
 
+		isJumping=0
+
 		health=100
 		special=50
 		lives=3

@@ -13,5 +13,7 @@ var
 
 		brendan = sound('SOUNDS/BRENDAN.wav', volume=10)
 		derek = sound('SOUNDS/DEREK.wav', volume=10)
+		hunter = sound('SOUNDS/HUNTER.wav', volume=10)
+		laundry = sound('SOUNDS/LAUNDRY.wav', volume=10)
 		csstitle = sound('SOUNDS/CHOOSEYOURGUARDIAN.wav', volume=40)
 		press = sound('SOUNDS/PRESSTART.wav', volume=40)

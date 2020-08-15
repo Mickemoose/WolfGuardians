@@ -47,6 +47,8 @@ button_tracker/echo
 			usr.force_dir = usr.lastdir
 	Pressed(button)
 		..()
+		if(button=="GamepadR2" &&!usr.attacking &&!usr.gameScreen!="CSS"&&!usr.isThrown)
+			usr.Jump()
 		if(button=="GamepadUp" && !usr.attacking &&usr.gameScreen!="CSS"&&!usr.isThrown)
 			usr.force_dir = usr.lastdir
 			walk(usr,NORTH)
@@ -113,6 +115,8 @@ button_tracker/echo
 	Pressed(button)
 		..()
 		for(var/mob/players/Player2/P2 in world)
+			if(button=="Gamepad2R2" &&!P2.attacking &&!usr.gameScreen!="CSS"&&!P2.isThrown)
+				P2.Jump()
 			if(button=="Gamepad2Up" && !P2.attacking &&usr.gameScreen!="CSS"&&!P2.isThrown)
 				P2.force_dir = P2.lastdir
 				walk(P2,1)
@@ -143,12 +147,12 @@ button_tracker/echo
 				P2.force_dir = WEST
 				P2.lastdir=WEST
 				walk(P2,NORTHWEST)
-			if(button=="Gamepad2Face3"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown)
+			if(button=="Gamepad2Face3"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown&&!P2.isJumping)
 				P2.Combo()
-			if(button=="Gamepad2Face2"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown)
+			if(button=="Gamepad2Face2"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown&&!P2.isJumping)
 				P2.Grab()
 				P2.Activate()
-			if(button=="Gamepad2Face4"&&!usr.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown)
+			if(button=="Gamepad2Face4"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown&&!P2.isJumping)
 				P2.Morph()
 
 //PLAYER 3
@@ -186,6 +190,8 @@ button_tracker/echo
 	Pressed(button)
 		..()
 		for(var/mob/players/Player3/P2 in world)
+			if(button=="Gamepad3R2" &&!P2.attacking &&!usr.gameScreen!="CSS"&&!P2.isThrown)
+				P2.Jump()
 			if(button=="Gamepad3Up" && !P2.attacking &&usr.gameScreen!="CSS")
 				P2.force_dir = P2.lastdir
 				walk(P2,1)
@@ -216,12 +222,12 @@ button_tracker/echo
 				P2.force_dir = WEST
 				P2.lastdir=WEST
 				walk(P2,NORTHWEST)
-			if(button=="Gamepad3Face3"&&!P2.attacking&&usr.gameScreen!="CSS")
+			if(button=="Gamepad3Face3"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Combo()
-			if(button=="Gamepad3Face2"&&!P2.attacking&&usr.gameScreen!="CSS")
+			if(button=="Gamepad3Face2"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Grab()
 				P2.Activate()
-			if(button=="Gamepad3Face4"&&!usr.attacking&&usr.gameScreen!="CSS")
+			if(button=="Gamepad3Face4"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Morph()
 
 //PLAYER 4
@@ -259,6 +265,8 @@ button_tracker/echo
 	Pressed(button)
 		..()
 		for(var/mob/players/Player2/P2 in world)
+			if(button=="Gamepad4R2" &&!P2.attacking &&!usr.gameScreen!="CSS"&&!P2.isThrown)
+				P2.Jump()
 			if(button=="Gamepad4Up" && !P2.attacking &&usr.gameScreen!="CSS")
 				P2.force_dir = P2.lastdir
 				walk(P2,1)
@@ -289,10 +297,10 @@ button_tracker/echo
 				P2.force_dir = WEST
 				P2.lastdir=WEST
 				walk(P2,NORTHWEST)
-			if(button=="Gamepad4Face3"&&!P2.attacking&&usr.gameScreen!="CSS")
+			if(button=="Gamepad4Face3"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Combo()
-			if(button=="Gamepad4Face2"&&!P2.attacking&&usr.gameScreen!="CSS")
+			if(button=="Gamepad4Face2"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Grab()
 				P2.Activate()
-			if(button=="Gamepad4Face4"&&!usr.attacking&&usr.gameScreen!="CSS")
+			if(button=="Gamepad4Face4"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Morph()

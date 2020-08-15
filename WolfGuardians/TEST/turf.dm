@@ -13,7 +13,8 @@ turf
 		road
 			icon='road.dmi'
 		DENSE
-			icon_state="null"
+			icon_state="sky"
 			density=1
+			invisibility=1
 			Enter(mob/m)
 				return 0

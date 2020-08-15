@@ -6,12 +6,12 @@ button_tracker/echo
 				usr.force_dir = usr.lastdir
 			if(button=="GamepadDown" && !usr.attacking &&usr.gameScreen!="CSS")
 				usr.force_dir = usr.lastdir
-			if(button=="GamepadFace1"&&!usr.attacking&&usr.gameScreen!="CSS")
+			if(button=="GamepadFace1"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isJumping)
 				usr.Activate()
-			if(button=="GamepadFace2"&&!usr.attacking&&usr.gameScreen!="CSS")
+			if(button=="GamepadFace2"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isJumping)
 				usr.Grab()
 				usr.Activate()
-			if(button=="GamepadFace3"&&!usr.attacking&&usr.gameScreen!="CSS")
+			if(button=="GamepadFace3"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isJumping)
 				usr.Combo()
 			if(button=="GamepadLeft"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
 				usr.force_dir = WEST
@@ -37,7 +37,7 @@ button_tracker/echo
 				usr.force_dir = EAST
 				usr.dir=EAST
 				usr.lastdir=EAST
-			if(button=="GamepadFace4"&&!usr.attacking&&usr.gameScreen!="CSS")
+			if(button=="GamepadFace4"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isJumping)
 				usr.Morph()
 			if(button=="North"||button=="GamepadUp")
 				return

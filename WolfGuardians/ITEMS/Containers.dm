@@ -7,6 +7,11 @@ obj
 			broken=0
 			list/
 				possibleItems = list("pizza","icecream","sushi","shrimp","donut")
+		Cross(mob/M)
+			if(!broken)
+				return 0
+			else
+				return 1
 		Barrel
 			icon_state="barrel"
 			bound_width=20

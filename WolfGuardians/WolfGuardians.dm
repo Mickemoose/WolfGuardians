@@ -63,6 +63,7 @@ world
 
 mob
 	step_size = 2
+	density=0
 
 obj
 	step_size = 8
