@@ -82,36 +82,53 @@ mob
 		HitStun(direction,distance,knockback=0,thrown=0)
 			if(!knockback)
 				if(direction==EAST)
-					SetVelocity(distance, 0)
+					src.force_dir = src.lastdir
+					walk(src,EAST,0,distance)
+					spawn(1)
+						src.force_dir = src.lastdir
+						walk(src,0)
 				if(direction==WEST)
-					SetVelocity(-distance, 0)
+					src.force_dir = src.lastdir
+					walk(src,WEST,0,distance)
+					spawn(1)
+						src.force_dir = src.lastdir
+						walk(src,0)
 			else if(thrown)
 				flick("knockback",src)
 				density=0
 				if(direction==EAST)
 				//	SetVelocity(18, 0)
+					src.force_dir = WEST
 					walk(src,EAST,0,6)
 					spawn(6)
 					//	SetVelocity(14, 0)
+						src.force_dir = WEST
 						walk(src,EAST,0,4)
 						spawn(3)
 						//	SetVelocity(4, 0)
+							src.force_dir = WEST
 							walk(src,EAST,0,2)
 							spawn(2)
+								src.force_dir = WEST
 								walk(src,0)
 				if(direction==WEST)
 				//	SetVelocity(18, 0)
+					src.force_dir = EAST
 					walk(src,WEST,0,6)
 					spawn(6)
 					//	SetVelocity(14, 0)
+						src.force_dir = EAST
 						walk(src,WEST,0,4)
 						spawn(3)
 						//	SetVelocity(4, 0)
+							src.force_dir = EAST
 							walk(src,WEST,0,2)
 							spawn(2)
+								src.force_dir = EAST
 								walk(src,0)
 
 				spawn(16)
+					src.force_dir = src.lastdir
 					walk(src,0)
 					density=1
 					icon_state="down"
@@ -122,17 +139,33 @@ mob
 				isThrown=1
 				density=0
 				if(direction==EAST)
-					SetVelocity(14, 0)
-					spawn(3)
-						SetVelocity(8, 0)
-						spawn(3)
-							SetVelocity(5, 0)
+				//	SetVelocity(18, 0)
+					src.force_dir = src.lastdir
+					walk(src,EAST,0,2.5)
+					spawn(2)
+					//	SetVelocity(14, 0)
+						src.force_dir = src.lastdir
+						walk(src,EAST,0,3)
+						spawn(1)
+						//	SetVelocity(4, 0)
+							src.force_dir = src.lastdir
+							walk(src,EAST,0,2)
+							spawn(1)
+								walk(src,0)
 				if(direction==WEST)
-					SetVelocity(-14, 0)
-					spawn(3)
-						SetVelocity(-8, 0)
-						spawn(3)
-							SetVelocity(-5, 0)
+				//	SetVelocity(18, 0)
+					src.force_dir = src.lastdir
+					walk(src,WEST,0,2.5)
+					spawn(2)
+					//	SetVelocity(14, 0)
+						src.force_dir = src.lastdir
+						walk(src,WEST,0,3)
+						spawn(1)
+						//	SetVelocity(4, 0)
+							src.force_dir = src.lastdir
+							walk(src,WEST,0,2)
+							spawn(1)
+								walk(src,0)
 
 				spawn(16)
 					density=1

@@ -8,6 +8,7 @@ mob
 			bound_x=21
 			health=100
 			dir=WEST
+			lastdir=WEST
 
 		/*	VelocityEnabled()
 				if(isThrown)

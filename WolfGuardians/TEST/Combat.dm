@@ -181,7 +181,7 @@ mob
 					flick("Punch1",src)
 					spawn(2)
 						view()<<punch
-						src.HitScan(distance=1,damage=2)
+						src.HitScan(distance=0.5,damage=2)
 						spawn(4)
 							src.attackCooldown=0
 							src.attacking=0
@@ -194,7 +194,7 @@ mob
 					flick("Punch2",src)
 					spawn(2.5)
 						view()<<punch
-						src.HitScan(distance=2,damage=3)
+						src.HitScan(distance=0.5,damage=3)
 						spawn(3)
 							src.attackCooldown=0
 							src.attacking=0
@@ -207,7 +207,7 @@ mob
 					flick("Punch3",src)
 					spawn(2)
 						view()<<punch
-						src.HitScan(distance=5,stunAmount=8,knockback=1,damage=5)
+						src.HitScan(distance=2,stunAmount=8,knockback=1,damage=5)
 						spawn(5)
 							src.attackCooldown=0
 							src.attacking=0

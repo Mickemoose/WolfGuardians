@@ -49,7 +49,7 @@ button_tracker/echo
 		..()
 		if(button=="GamepadUp" && !usr.attacking &&usr.gameScreen!="CSS"&&!usr.isThrown)
 			usr.force_dir = usr.lastdir
-			walk(usr,1)
+			walk(usr,NORTH)
 		if(button=="GamepadDown" && !usr.attacking &&usr.gameScreen!="CSS"&&!usr.isThrown)
 			usr.force_dir = usr.lastdir
 			walk(usr,SOUTH)
