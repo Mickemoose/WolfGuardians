@@ -1,0 +1,19 @@
+mob
+	proc
+		Jump()
+			if(canJump)
+				SetVelocity(4,100)
+				spawn(3)
+					SetVelocity(0,1)
+					spawn(2)
+						SetVelocity(Vector2.Zero)
+						spawn(2)
+							Fall()
+		Fall()
+			SetVelocity(0,-1)
+			spawn(2)
+				SetVelocity(0,-4)
+				spawn(3)
+					SetVelocity(Vector2.Zero)
+					spawn(2)
+						canJump=1
