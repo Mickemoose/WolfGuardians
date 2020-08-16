@@ -109,8 +109,7 @@ mob
 			if(playerCount==activePlayers.len&&playerCount>=1)
 				for(var/mob/pressStart/PS in world)
 					PS.invisibility=0
-				spawn(7)
-				//	world<<press
+
 				return 1
 			else
 				for(var/mob/pressStart/PS in world)

@@ -30,7 +30,7 @@ mob
 			huntCooldown=0
 
 		New()
-			AI()
+		//	AI()
 		//	AILoop()
 		proc
 			AI()

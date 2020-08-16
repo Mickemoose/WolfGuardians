@@ -132,7 +132,6 @@ mob
 					src.force_dir = src.lastdir
 					attacking=1
 					walk(src,0)
-					density=1
 					icon_state="down"
 					spawn(4)
 						DeathCheck()
@@ -170,7 +169,6 @@ mob
 								walk(src,0)
 
 				spawn(16)
-					density=1
 					icon_state="down"
 					spawn(4)
 						DeathCheck()

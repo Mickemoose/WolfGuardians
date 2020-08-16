@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1597546551
-DIR: CHARACTERS 
+LAST_COMPILE_TIME: 1597547487
+DIR: CHARACTERS ENEMY TEST 
 AUTO_FILE_DIR: ON
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 513.1528
 WINDOW: ITEMS\Containers.dm;Dev Log.dm;CHARACTERS\Goober.dmi;Game Vars.dm;TEST\Mob.dm;TEST\Combat.dm;Mob Vars.dm;WolfGuardians.dm;Local Controller.dm;TEST\Hitbox.dm;interface.dmf;UI\UI.dm;UI\SpecialBar.dm;UI\HealthBar.dm;CHARACTERS\CSS.dm;TEST\Morph.dm;ENEMY\Goober.dm;Sounds.dm;TestMap.dmm;CHARACTERS\Derek.dmi;TEST\GameOver.dm;CHARACTERS\Brendan.dmi;CHARACTERS\Red.dmi;Map Fade.dm;CHARACTERS\Portraits.dmi;UI\Faces.dmi;UI\Letters.dmi;UI\Health.dmi;UI\Special.dmi
-FILE: CHARACTERS\CSS.dm
+FILE: TEST\Hitbox.dm
 */
 // END_INTERNALS
