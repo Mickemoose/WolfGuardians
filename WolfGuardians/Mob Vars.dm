@@ -16,6 +16,7 @@ mob
 		isPlayer=0
 		leader=0
 		isJumping=0
+		damage=5
 
 		health=100
 		special=50

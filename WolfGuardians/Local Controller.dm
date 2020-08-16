@@ -148,6 +148,12 @@ button_tracker/echo
 				P2.lastdir=WEST
 				walk(P2,NORTHWEST)
 			if(button=="Gamepad2Face3"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown&&!P2.isJumping)
+				if(P2.comboCount==0)
+					P2.damage=5
+				if(P2.comboCount==1)
+					P2.damage=5
+				if(P2.comboCount==2)
+					P2.damage=10
 				P2.Combo()
 			if(button=="Gamepad2Face2"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isThrown&&!P2.isJumping)
 				P2.Grab()
@@ -223,6 +229,12 @@ button_tracker/echo
 				P2.lastdir=WEST
 				walk(P2,NORTHWEST)
 			if(button=="Gamepad3Face3"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
+				if(P2.comboCount==0)
+					P2.damage=5
+				if(P2.comboCount==1)
+					P2.damage=5
+				if(P2.comboCount==2)
+					P2.damage=10
 				P2.Combo()
 			if(button=="Gamepad3Face2"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Grab()
@@ -298,6 +310,12 @@ button_tracker/echo
 				P2.lastdir=WEST
 				walk(P2,NORTHWEST)
 			if(button=="Gamepad4Face3"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
+				if(P2.comboCount==0)
+					P2.damage=5
+				if(P2.comboCount==1)
+					P2.damage=5
+				if(P2.comboCount==2)
+					P2.damage=10
 				P2.Combo()
 			if(button=="Gamepad4Face2"&&!P2.attacking&&usr.gameScreen!="CSS"&&!P2.isJumping)
 				P2.Grab()

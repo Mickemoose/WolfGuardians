@@ -12,6 +12,12 @@ button_tracker/echo
 				usr.Grab()
 				usr.Activate()
 			if(button=="GamepadFace3"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isJumping)
+				if(usr.comboCount==0)
+					usr.damage=5
+				if(usr.comboCount==1)
+					usr.damage=5
+				if(usr.comboCount==2)
+					usr.damage=10
 				usr.Combo()
 			if(button=="GamepadLeft"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
 				usr.force_dir = WEST
@@ -181,7 +187,7 @@ mob
 					flick("Punch1",src)
 					spawn(2)
 						view()<<punch
-						src.HitScan(distance=0.5,damage=2)
+						src.HitScan(distance=0.5,damage=src.damage)
 						spawn(4)
 							src.attackCooldown=0
 							src.attacking=0
@@ -194,7 +200,7 @@ mob
 					flick("Punch2",src)
 					spawn(2.5)
 						view()<<punch
-						src.HitScan(distance=0.5,damage=3)
+						src.HitScan(distance=0.5,damage=src.damage)
 						spawn(3)
 							src.attackCooldown=0
 							src.attacking=0
@@ -207,7 +213,7 @@ mob
 					flick("Punch3",src)
 					spawn(2)
 						view()<<punch
-						src.HitScan(distance=2,stunAmount=8,knockback=1,damage=5)
+						src.HitScan(distance=2,stunAmount=8,knockback=1,damage=src.damage)
 						spawn(5)
 							src.attackCooldown=0
 							src.attacking=0

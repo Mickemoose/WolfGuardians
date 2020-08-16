@@ -110,7 +110,7 @@ mob
 				for(var/mob/pressStart/PS in world)
 					PS.invisibility=0
 				spawn(7)
-					world<<press
+				//	world<<press
 				return 1
 			else
 				for(var/mob/pressStart/PS in world)
@@ -152,6 +152,13 @@ mob
 				src.icon_state="Idle"
 				src.dir=EAST
 				src.lastdir=EAST
+			if(character=="BRENDAN")
+				src.icon='CHARACTERS/Brendan.dmi'
+				src.guardian="PURPLE"
+				src.gicon = file('CHARACTERS/Red.dmi')
+				src.icon_state="Idle"
+				src.dir=EAST
+				src.lastdir=EAST
 			PlayerCheck()
 
 		UnPickCharacter()
@@ -173,7 +180,7 @@ button_tracker/echo
 		..()
 		if(button=="Gamepad2Start" &&usr.gameScreen=="CSS")
 			for(var/mob/players/Player2/M in world)
-				if(!M.active)
+				if(!M.active && !M.selected)
 					M.active=1
 					M.playerNumber=2
 					playerCount++
