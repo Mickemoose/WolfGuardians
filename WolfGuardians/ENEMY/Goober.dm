@@ -3,12 +3,14 @@ mob
 		Goober
 			icon='CHARACTERS/Goober.dmi'
 			icon_state="Idle"
-			bound_width=19
-			bound_height=28
+			bound_width=18
+			bound_height=20
 			bound_x=21
+			bound_y=10
 			health=100
 			dir=WEST
 			lastdir=WEST
+			density=0
 
 		/*	VelocityEnabled()
 				if(isThrown)
@@ -22,17 +24,37 @@ mob
 		var
 			list
 				targets=list()
+			AI_ON=0
 			target
 			state="Idle"
 			huntCooldown=0
 
 		New()
-		//	AI()
+			AI()
+		//	AILoop()
 		proc
 			AI()
-				spawn(5)
-					Scan()
+				while(!src.isDead)
+					AI_ON=1
+					for(var/mob/M in oview())
+						if(bounds_dist(src,M)<=0 ||M==src)
+							src.force_dir=src.dir
+							if(!attacking &&!isThrown &&!isStunned)
+								src.Combo()
+							else
+								break
+						else
+							if(!attacking &&!isThrown&&!isStunned)
+								walk_to(src, M,-16, 0.75)
+								break
+							else
+								break
+					sleep(5)
 
+			AILoop()
+				spawn(30)
+					if(AI_ON==0)
+						AI()
 
 			Scan()
 				state="Scanning"

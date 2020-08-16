@@ -70,7 +70,7 @@ obj
 
 mob
 	var
-		debug=0
+		debug=1
 		lastdir=null
 		obj/maskbar/bartest
 		obj/maskbar/p1special
@@ -90,6 +90,7 @@ mob
 				activePlayers.Add(P2)
 				P2.bound_height=20
 				P2.bound_x=21
+				P2.bound_y=10
 				P2.dir=EAST
 				P2.lastdir=EAST
 			src.loc=locate(42,30,1)
@@ -103,6 +104,7 @@ mob
 			icon_state="Idle"
 			bound_width=19
 			bound_height=20
+			bound_y=10
 			bound_x=21
 			src.dir=EAST
 			src.lastdir=EAST

@@ -336,6 +336,7 @@ button_tracker/echo
 							M.bound_width=19
 							M.bound_height=20
 							M.bound_x=21
+							M.bound_y=10
 							M.leader=1
 							spawn(60)
 								M.LeaderScan()
@@ -347,6 +348,7 @@ button_tracker/echo
 							M.bound_width=19
 							M.bound_height=20
 							M.bound_x=21
+							M.bound_y=10
 							M.invisibility=0
 							spawn(10)
 								usr.P2_UI_LOAD()

@@ -25,7 +25,7 @@ mob
 			spawn(frames)
 				del H
 		//bounds(Ref, x_offset, y_offset, extra_width=0, extra_height=0)
-		HitScan(distance,xoffset=16,yoffset=0,extrawidth=0,extra_height=-16,stunAmount=3,knockback=0,damage=0)
+		HitScan(distance,xoffset=16,yoffset=0,extrawidth=0,extra_height=0,stunAmount=3,knockback=0,damage=0)
 
 			if(dir==EAST)
 				for(var/obj/containers/C in bounds(src, xoffset, yoffset, extrawidth, -8)) if(!C.broken)
@@ -93,6 +93,7 @@ mob
 					spawn(1)
 						src.force_dir = src.lastdir
 						walk(src,0)
+
 			else if(thrown)
 				flick("knockback",src)
 				density=0
@@ -129,6 +130,7 @@ mob
 
 				spawn(16)
 					src.force_dir = src.lastdir
+					attacking=1
 					walk(src,0)
 					density=1
 					icon_state="down"
@@ -175,6 +177,7 @@ mob
 		DeathCheck()
 			if(health<=0)
 				isDead=1
+				attacking=0
 				isThrown=0
 				icon_state="down"
 				Death()
@@ -182,6 +185,8 @@ mob
 				flick("getup",src)
 				spawn(1)
 					isThrown=0
+					attacking=0
+					isStunned=0
 					icon_state="Idle"
 
 		RespawnCheck()
