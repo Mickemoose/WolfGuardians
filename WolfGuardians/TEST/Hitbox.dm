@@ -191,6 +191,7 @@ mob
 			if(lives > 0)
 				lives--
 				isDead=0
+				damage=5
 				P1_UI_UPDATE()
 				P2_UI_UPDATE()
 				src.icon_state="Idle"
@@ -229,6 +230,8 @@ mob
 						animate(src, alpha = 255, time = 0)
 					if(deadTimer==0)
 						if(istype(src,/mob/Enemy))
+							global.kills++
+							KillCheck()
 							del src
 						else
 							animate(src, alpha = 0, time = 0)

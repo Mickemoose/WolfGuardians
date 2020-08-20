@@ -13,11 +13,11 @@ button_tracker/echo
 				usr.Activate()
 			if(button=="GamepadFace3"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isJumping)
 				if(usr.comboCount==0)
-					usr.damage=5
+					usr.damage=usr.damage
 				if(usr.comboCount==1)
-					usr.damage=5
+					usr.damage=usr.damage
 				if(usr.comboCount==2)
-					usr.damage=10
+					usr.damage=usr.damage+2
 				usr.Combo()
 			if(button=="GamepadLeft"&&!usr.attacking&&usr.gameScreen!="CSS"&&!usr.isThrown)
 				usr.force_dir = WEST

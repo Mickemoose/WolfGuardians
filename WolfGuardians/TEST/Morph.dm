@@ -37,6 +37,7 @@ mob
 								src.icon_state="Idle"
 								src.attacking=0
 								src.attackCooldown=0
+								src.damage=10
 								fade.Map(usr, 0, 16, 6)
 								spawn(6)
 									src.plane=1

@@ -7,7 +7,7 @@ mob
 			bound_height=20
 			bound_x=21
 			bound_y=10
-			health=100
+			health=50
 			dir=WEST
 			lastdir=WEST
 			density=0
@@ -30,14 +30,14 @@ mob
 			huntCooldown=0
 
 		New()
-		//	AI()
+			AI()
 		//	AILoop()
 		proc
 			AI()
 				while(!src.isDead)
 					AI_ON=1
-					for(var/mob/M in oview())
-						if(bounds_dist(src,M)<=0 ||M==src)
+					for(var/mob/M in oview(5))
+						if(bounds_dist(src,M)<=2 && !istype(M,/mob/Enemy) && !M.isDead)
 							src.force_dir=src.dir
 							if(!attacking &&!isThrown &&!isStunned)
 								src.Combo()

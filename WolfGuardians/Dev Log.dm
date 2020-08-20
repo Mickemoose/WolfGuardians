@@ -17,9 +17,20 @@ AI (Basic AI implemented)
 
 
 to do list
-Fnish Derek
-Enemy Attacks and AI
+Fnish Derek (needs special 1)
+Enemy Attacks and AI (Need ability to Grab, need Spawning)
 Morphed Special 1
-Player 3 and 4 support
+Player 3 and 4 support (need UI and spawning)
+Finish Brendan (needs base finished and guardian form)
 
+
+
+Plans/Ideas
+Level Intro and Outro
+Derian Boss Battle (Unlockable Derian)
+Satia Boss Battle (Unlockable Satia)
+4 Total Morphed Specials
+Run/Dash ability?
+Pickup and Throwable Objects? Or people?
+Jump Attack for Morphed form
 */

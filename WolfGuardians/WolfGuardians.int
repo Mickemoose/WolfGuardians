@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1597547487
-DIR: CHARACTERS ENEMY TEST 
+LAST_COMPILE_TIME: 1597908678
+DIR: CHARACTERS ENEMY ITEMS TEST UI 
 AUTO_FILE_DIR: ON
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 513.1528
-WINDOW: ITEMS\Containers.dm;Dev Log.dm;CHARACTERS\Goober.dmi;Game Vars.dm;TEST\Mob.dm;TEST\Combat.dm;Mob Vars.dm;WolfGuardians.dm;Local Controller.dm;TEST\Hitbox.dm;interface.dmf;UI\UI.dm;UI\SpecialBar.dm;UI\HealthBar.dm;CHARACTERS\CSS.dm;TEST\Morph.dm;ENEMY\Goober.dm;Sounds.dm;TestMap.dmm;CHARACTERS\Derek.dmi;TEST\GameOver.dm;CHARACTERS\Brendan.dmi;CHARACTERS\Red.dmi;Map Fade.dm;CHARACTERS\Portraits.dmi;UI\Faces.dmi;UI\Letters.dmi;UI\Health.dmi;UI\Special.dmi
-FILE: TEST\Hitbox.dm
+WINDOW: ITEMS\Containers.dm;Dev Log.dm;CHARACTERS\Goober.dmi;Game Vars.dm;TEST\Mob.dm;TEST\Combat.dm;Mob Vars.dm;WolfGuardians.dm;Local Controller.dm;TEST\Hitbox.dm;interface.dmf;UI\UI.dm;UI\SpecialBar.dm;UI\HealthBar.dm;CHARACTERS\CSS.dm;TEST\Morph.dm;UI\Letters.dmi;UI\Frame.dmi;UI\Arrow.dmi;UI\Arrow.dm;Sounds.dm;ENEMY\Goober.dm;ENEMY\KillWall.dm;TEST\turf.dm;TestMap.dmm;TEST\GameOver.dm
+FILE: Dev Log.dm
 */
 // END_INTERNALS

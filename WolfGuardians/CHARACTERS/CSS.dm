@@ -8,8 +8,10 @@ mob
 		Player3
 
 			icon_state="P3"
+			move_speed=4
 		Player4
 			icon_state="P4"
+			move_speed=4
 		Move()
 			..()
 	proc
@@ -143,7 +145,7 @@ mob
 			PlayerCheck()
 		PickCharacter(character)
 			src.invisibility=101
-
+			src.damage=5
 			if(character=="DEREK")
 				src.icon='CHARACTERS/Derek.dmi'
 				src.guardian="RED"
@@ -177,6 +179,313 @@ mob
 button_tracker/echo
 	Pressed(button)
 		..()
+		//PLAYER 4
+		if(button=="Gamepad4Start" &&usr.gameScreen=="CSS")
+			for(var/mob/players/Player4/M in world)
+				if(!M.active && !M.selected)
+					M.active=1
+					M.playerNumber=4
+					playerCount++
+					var/mob/selectors/Player4/P1 = new
+					P1.loc=locate(52,28,2)
+					P1.slot=4
+					for(var/obj/css/c in P1.loc)
+						P1.hovering.Add(c)
+						for(var/mob/names/Player4/n2 in world)
+							n2.icon_state=c.character
+						for(var/mob/people/Player4/pp1 in world)
+							pp1.icon=c.icon
+							pp1.icon_state="Idle"
+					for(var/mob/portraits/Player4/P in world)
+						P.icon_state="P4"
+					usr.PlayerCheck()
+					return
+
+				if(M.active && !M.selected)
+					for(var/mob/selectors/Player4/P1 in world)
+						del P1
+					M.active=0
+					playerCount--
+					for(var/mob/portraits/Player4/P in world)
+						P.icon_state="P4-lock"
+					for(var/mob/names/Player4/n2 in world)
+						n2.icon_state=null
+					for(var/mob/people/Player4/pp1 in world)
+						pp1.icon=null
+					usr.PlayerCheck()
+					return
+
+		for(var/mob/players/Player4/M in world)
+			if(button=="Gamepad4Face3"&&usr.gameScreen=="CSS"&&M.selected&&!M.selecting)
+				for(var/mob/selectors/Player4/P1 in world)
+					M.selected=0
+					usr<<cancel
+					activePlayers.Remove(M)
+					M.UnPickCharacter()
+					P1.icon_state="P4"
+
+					for(var/mob/people/Player4/pp1 in world)
+						pp1.icon_state="Idle"
+			if(button=="Gamepad4Face2"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player4/P1 in world)
+					M.selecting=1
+					M.selected=1
+					usr<<select
+
+					flick("P4-select",P1)
+					spawn(6)
+						P1.icon_state="P4-selected"
+					spawn(10)
+						M.selecting=0
+					for(var/obj/css/c in P1.hovering)
+						M.character=c.character
+						world<<c.clip
+						activePlayers.Add(M)
+						M.PickCharacter(M.character)
+					for(var/mob/people/Player4/pp1 in world)
+						flick("Power",pp1)
+						spawn(1)
+							usr<<punch
+						spawn(3)
+							pp1.icon_state="Show"
+			if(button=="Gamepad4Left"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player4/P1 in world)
+					usr<<menubutton
+					if(P1.slot==1||P1.slot==6)
+						P1.x+=32
+						P1.slot+=4
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player4/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player4/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+					else
+						P1.x-=8
+						P1.slot--
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player4/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player4/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+			if(button=="Gamepad4Right"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player4/P1 in world)
+					usr<<menubutton
+					if(P1.slot==5||P1.slot==10)
+						P1.x-=32
+						P1.slot-=4
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player4/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player4/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+					else
+						P1.x+=8
+						P1.slot++
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player4/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player4/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+			if(button=="Gamepad4Up"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player4/P1 in world)
+					usr<<menubutton
+					if(P1.slot>=6&&P1.slot<=10)
+						P1.y+=8
+						P1.slot-=5
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player4/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player4/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+			if(button=="Gamepad4Down"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player4/P1 in world)
+					usr<<menubutton
+					if(P1.slot>=1&&P1.slot<=6)
+						P1.y-=8
+						P1.slot+=5
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player4/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player4/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+		//PLAYER 3
+		if(button=="Gamepad3Start" &&usr.gameScreen=="CSS")
+			for(var/mob/players/Player3/M in world)
+				if(!M.active && !M.selected)
+					M.active=1
+					M.playerNumber=3
+					playerCount++
+					var/mob/selectors/Player3/P1 = new
+					P1.loc=locate(44,28,2)
+					P1.slot=3
+					for(var/obj/css/c in P1.loc)
+						P1.hovering.Add(c)
+						for(var/mob/names/Player3/n2 in world)
+							n2.icon_state=c.character
+						for(var/mob/people/Player3/pp1 in world)
+							pp1.icon=c.icon
+							pp1.icon_state="Idle"
+					for(var/mob/portraits/Player3/P in world)
+						P.icon_state="P3"
+					usr.PlayerCheck()
+					return
+
+				if(M.active && !M.selected)
+					for(var/mob/selectors/Player3/P1 in world)
+						del P1
+					M.active=0
+					playerCount--
+					for(var/mob/portraits/Player3/P in world)
+						P.icon_state="P3-lock"
+					for(var/mob/names/Player3/n2 in world)
+						n2.icon_state=null
+					for(var/mob/people/Player3/pp1 in world)
+						pp1.icon=null
+					usr.PlayerCheck()
+					return
+
+		for(var/mob/players/Player3/M in world)
+			if(button=="Gamepad3Face3"&&usr.gameScreen=="CSS"&&M.selected&&!M.selecting)
+				for(var/mob/selectors/Player3/P1 in world)
+					M.selected=0
+					usr<<cancel
+					activePlayers.Remove(M)
+					M.UnPickCharacter()
+					P1.icon_state="P3"
+
+					for(var/mob/people/Player3/pp1 in world)
+						pp1.icon_state="Idle"
+			if(button=="Gamepad3Face2"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player3/P1 in world)
+					M.selecting=1
+					M.selected=1
+					usr<<select
+
+					flick("P3-select",P1)
+					spawn(6)
+						P1.icon_state="P3-selected"
+					spawn(10)
+						M.selecting=0
+					for(var/obj/css/c in P1.hovering)
+						M.character=c.character
+						world<<c.clip
+						activePlayers.Add(M)
+						M.PickCharacter(M.character)
+					for(var/mob/people/Player3/pp1 in world)
+						flick("Power",pp1)
+						spawn(1)
+							usr<<punch
+						spawn(3)
+							pp1.icon_state="Show"
+			if(button=="Gamepad3Left"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player3/P1 in world)
+					usr<<menubutton
+					if(P1.slot==1||P1.slot==6)
+						P1.x+=32
+						P1.slot+=4
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player3/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player3/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+					else
+						P1.x-=8
+						P1.slot--
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player3/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player3/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+			if(button=="Gamepad3Right"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player3/P1 in world)
+					usr<<menubutton
+					if(P1.slot==5||P1.slot==10)
+						P1.x-=32
+						P1.slot-=4
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player3/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player3/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+					else
+						P1.x+=8
+						P1.slot++
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player3/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player3/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+			if(button=="Gamepad3Up"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player3/P1 in world)
+					usr<<menubutton
+					if(P1.slot>=6&&P1.slot<=10)
+						P1.y+=8
+						P1.slot-=5
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player3/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player3/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+			if(button=="Gamepad3Down"&&usr.gameScreen=="CSS"&&!M.selected&&M.active)
+				for(var/mob/selectors/Player3/P1 in world)
+					usr<<menubutton
+					if(P1.slot>=1&&P1.slot<=6)
+						P1.y-=8
+						P1.slot+=5
+						P1.hovering.Remove(P1.hovering)
+						for(var/obj/css/c in P1.loc)
+							P1.hovering.Add(c)
+							for(var/mob/names/Player3/n2 in world)
+								n2.icon_state=c.character
+							for(var/mob/people/Player3/pp1 in world)
+								pp1.icon=c.icon
+								pp1.icon_state="Idle"
+						return
+		//PLAYER 2
 		if(button=="Gamepad2Start" &&usr.gameScreen=="CSS")
 			for(var/mob/players/Player2/M in world)
 				if(!M.active && !M.selected)
@@ -331,7 +640,7 @@ button_tracker/echo
 						return
 
 
-
+		//PLAYER 1
 		if(button=="GamepadStart" &&usr.gameScreen=="CSS")
 			if(usr.active && usr.selected)
 				if(usr.PlayerCheck())

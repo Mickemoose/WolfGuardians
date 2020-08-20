@@ -20,7 +20,7 @@ mob
 
 		health=100
 		special=50
-		lives=3
+		lives=0
 
 
 		playerNumber=0

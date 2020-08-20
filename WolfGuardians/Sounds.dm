@@ -8,6 +8,7 @@ var
 		menubutton = sound('SOUNDS/menubutton.wav', volume=10)
 		select = sound('SOUNDS/choose.wav', volume=10)
 		cancel = sound('SOUNDS/cancel.wav', volume=10)
+		go = sound('SOUNDS/go.wav', volume=10)
 
 		css = sound('SOUNDS/css.mid', 1, volume=10)
 
